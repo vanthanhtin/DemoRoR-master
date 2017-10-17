@@ -1,0 +1,52 @@
+
+<div class="header">
+	<div class="menu">
+		<div class="left">
+			<a href="<%= request.env["HTTP_HOST"] %>" class="logo" title="AgriDoctor system">DemoRoR</a>
+			<input type="text" value="" placeholder="Search posts, friends..." class="search"/>
+		</div>
+		<div class="right">
+			<a href="#" title="Sign In" class="sign_in">Sign In</a>
+			<span>or</span>
+			<a href="#" title="Sign Up" class="sign_up">Sign Up</a>
+		</div>
+	</div>	
+</div>
+<div class="main">
+	<div class="main_content">
+		<div class="banner">
+			<h1>Welcome to TRANTHANHEPU.COM</h1>
+			<%= image_tag "banner.png" %>
+		</div>
+		<div class="register">
+			<h1>Sign Up</h1>
+			<h2>It’s free and always will be.</h2>
+			<div class="register_form">				
+				<%= form_for(@signup, url: 'new') do |f| %>
+
+					<% if @signup.errors.any? %>
+				        <div class="message">				          				          
+				            <% @signup.errors.full_messages.each do |msg| %>
+				                <p class="bg-warning">★ <%= msg %></p>
+				            <% end %>				          
+				        </div>
+				    <% end %>
+				  	<%= f.text_field :first_name, :placeholder => "Fist name", :class => 'short_input', "ng-model" => "signup.first_name", :required => "required" %>
+				  	<%= f.text_field :last_name, :placeholder => 'Last name', :class => 'short_input', "ng-model" => "signup.last_name", :required => "required" %>
+				  	<%= f.email_field :email, :placeholder => 'Email', :class => 'long_input', "ng-model" => "signup.email", :required => "required" %>				  	 
+				  	<%= f.password_field :password, :placeholder => 'Password', :class => 'long_input', "ng-model" => "signup.password", :required => "required" %>
+				  	<%= f.password_field :password_confirmation, :placeholder => 'Retype Password', :class => 'long_input', "ng-model" => "signup.passwordConfirm", "data-match"=>"password", :required => "required" %>
+				  	<p>
+				  		By clicking Sign Up, you agree to our <a href="#">Terms</a> and that you have read our <a href="#">Data Use Policy</a>, including our <a href="#">Cookie Use</a>.</p>
+				  	<%= f.submit :"Sign Up", :id => "btn_signup" %>
+				<% end %>	
+			</div>
+		</div>
+	</div>	
+</div>
+<div class="footer">
+	<div class="info">
+		TRANTHANHEPU.COM © 2014
+	</div>
+</div>
+	
